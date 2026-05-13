@@ -56,6 +56,62 @@ for f in skills/csuite-*.md; do
 done
 ```
 
+## Using Without Claude Code
+
+No Claude Code? No problem. The skill files are plain text prompts — you can run a full board session in any chat interface (ChatGPT, Claude.ai, OpenWebUI, Copilot, etc.) using the 3-step workflow below.
+
+### Step 1 — Start with the Moderator
+
+Open a new chat. Paste the full contents of `skills/csuite-moderator.md` as your **system prompt** (custom instructions / personality / system message — whatever your tool calls it).
+
+Then describe your topic:
+
+```
+I need a board session on: [your decision or question]
+```
+
+The Moderator will ask a few clarifying questions and then tell you which 2–4 agents it wants to convene. Note those names — you'll need them in Step 2.
+
+### Step 2 — Run each selected agent
+
+For each agent the Moderator selected, open a **new chat**. Paste that agent's skill file as the system prompt (e.g. `skills/csuite-cfo.md` for the CFO).
+
+Then give it the context from Step 1:
+
+```
+Topic: [your decision]
+Context: [paste the clarifying answers you gave the Moderator]
+
+Please give your independent assessment.
+```
+
+Copy the full response. Repeat for each selected agent.
+
+### Step 3 — Synthesize
+
+Go back to your Moderator chat from Step 1. Paste all agent responses in one message:
+
+```
+Here are the board assessments:
+
+**CFO:** [paste response]
+
+**Investor:** [paste response]
+
+**CEO:** [paste response]
+
+Please run Round 2 (agents respond to each other) and then deliver the synthesis and recommendation.
+```
+
+The Moderator generates the discussion and final recommendation.
+
+---
+
+**Tips**
+- Use the strongest model available for Step 1 and Step 3 (Moderator). Agent steps in Step 2 can run on a lighter model.
+- You can skip Step 2 entirely and ask the Moderator to simulate all agents inline — less depth, but faster for quick decisions.
+- The `skills/csuite-research.md` prompt works great standalone in Step 1 before any board session if you want a proper research brief first.
+
 ## Design Principles
 
 - **Context-neutral** — no personal context hardcoded; injected at runtime
