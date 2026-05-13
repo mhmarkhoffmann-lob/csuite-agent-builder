@@ -1,50 +1,50 @@
 # C-Suite Agent Builder
 
-Ein modulares "Board of Directors" als Claude Code Skill-System. Statt einem generischen Assistenten bekommst du ein adaptiv besetztes Board aus C-Suite-Perspektiven, das deine Entscheidung in zwei Diskussionsrunden plus Synthese durchleuchtet.
+A modular "Board of Directors" as a Claude Code skill system. Instead of a generic assistant, you get an adaptively assembled board of C-suite perspectives that examines your decision across two discussion rounds plus a synthesis.
 
-## Was es macht
+## What it does
 
-`/csuite [thema]` startet eine Board-Session:
+`/csuite [topic]` starts a board session:
 
-1. **Intake** — Moderator klärt Entscheidung, Rolle, Kontext
-2. **Research** — autonomer Research-Agent bestimmt Wissensdimensionen, sammelt Fakten, liefert ein Session Context Package
-3. **Board-Auswahl** — Moderator wählt 2–4 passende Agents aus dem Pool
-4. **Runde 1** — jeder Agent gibt unabhängige Einschätzung (paralleler Subagent-Aufruf)
-5. **Runde 2** — Agents reagieren aufeinander: Frontalwiderspruch, Themenwechsel, Asymmetrien
-6. **Synthese** — Konsens, Spannungen, Empfehlung
+1. **Intake** — Moderator clarifies the decision, role, and context
+2. **Research** — Autonomous research agent determines knowledge dimensions, gathers facts, delivers a Session Context Package
+3. **Board Selection** — Moderator picks 2–4 fitting agents from the pool
+4. **Round 1** — Each agent gives an independent assessment (parallel subagent calls)
+5. **Round 2** — Agents respond to each other: direct contradiction, topic shifts, asymmetries
+6. **Synthesis** — Consensus, tensions, recommendation
 
-Einzelne Agents sind auch standalone nutzbar (`/csuite-cfo`, `/research`, etc.).
+Individual agents are also usable standalone (`/csuite-cfo`, `/csuite-research`, etc.).
 
-## Agent-Pool
+## Agent Pool
 
-- **CEO** — Gesamtstrategie, Vision, langfristiger Wert
-- **CFO** — Finanzen, ROI, Risiko
-- **COO** — Operations, Umsetzbarkeit, Ressourcen
-- **CHRO** — Karriere, Führung, Kultur
-- **CIO** — IT-Architektur, Daten, Skalierbarkeit
-- **CAIO** — AI-First-Perspektive, Disruption, Automatisierung
-- **CSUO** — Nachhaltigkeit, ESG, ökologischer & sozialer Impact
-- **Chief Strategist** — Langfriststrategie, Megatrends (10-Jahres-Horizont)
-- **Investor** — externe Contrarian-View, Kill-Szenarien
-- **Ethiker** — ethische Implikationen, Stakeholder, unbeabsichtigte Folgen
-- **Coach** — persönliche Werte, Klarheit, Authentizität
+- **CEO** — Overall strategy, vision, long-term value
+- **CFO** — Finance, ROI, risk
+- **COO** — Operations, feasibility, resources
+- **CHRO** — Career, leadership, culture
+- **CIO** — IT architecture, data, scalability
+- **CAIO** — AI-first perspective, disruption, automation
+- **CSUO** — Sustainability, ESG, ecological and social impact
+- **Chief Strategist** — Long-term strategy, mega-trends (10-year horizon)
+- **Investor** — External contrarian view, kill scenarios
+- **Ethicist** — Ethical implications, stakeholders, unintended consequences
+- **Coach** — Personal values, clarity, authenticity
 
-Plus zwei Orchestrierer:
+Plus two orchestrators:
 
-- **Moderator** (`csuite-moderator.md`) — adaptiver Board-Selector, Diskussionsleiter
-- **Research** (`csuite-research.md`) — autonomer Vorab-Recherche-Agent
+- **Moderator** (`csuite-moderator.md`) — Adaptive board selector and discussion facilitator
+- **Research** (`csuite-research.md`) — Autonomous pre-session research agent
 
-## Beispiel-Konstellationen
+## Example Constellations
 
-- Karriereentscheidung → CHRO + Coach + Chief Strategist
-- Business-Projekt bewerten → CFO + Investor + CEO
-- Tech-Investition → CIO + CAIO + CFO
-- Persönliche Prioritäten → Coach + Ethiker + Chief Strategist
-- Nachhaltigkeitsfrage → CSUO + Ethiker + CFO
+- Career decision → CHRO + Coach + Chief Strategist
+- Evaluate a business project → CFO + Investor + CEO
+- Tech investment → CIO + CAIO + CFO
+- Personal priorities → Coach + Ethicist + Chief Strategist
+- Sustainability question → CSUO + Ethicist + CFO
 
 ## Installation
 
-Skills nach `~/.claude/skills/csuite-[name]/` kopieren (oder als Plugin in einem Marketplace verpacken). Alle Skills sind reine Markdown-Dateien mit Frontmatter — kein Build-Schritt nötig.
+Copy skills to `~/.claude/skills/csuite-[name]/` (or package as a plugin for a marketplace). All skills are pure Markdown files with frontmatter — no build step required.
 
 ```bash
 git clone https://github.com/mhmarkhoffmann-lob/csuite-agent-builder.git
@@ -56,12 +56,12 @@ for f in skills/csuite-*.md; do
 done
 ```
 
-## Design-Prinzipien
+## Design Principles
 
-- **Kontext-neutral** — kein persönlicher Kontext hardcoded, wird zur Laufzeit injiziert
-- **Modular** — jeder Agent eigenständig nutzbar oder über Moderator orchestriert
-- **Echte Subagent-Orchestrierung** — Runde 1 läuft parallel über das Agent-Tool, kein Roleplay
-- **Diskussion statt Konsens** — Runde 2 verlangt Frontalwiderspruch, Themenwechsel oder Asymmetrie
-- **Claude Code first** — primär als Skill-System; Opus 4.7 empfohlen für Board-Sessions, Sonnet 4.6 für Einzelagents
+- **Context-neutral** — no personal context hardcoded; injected at runtime
+- **Modular** — each agent usable standalone or orchestrated via the Moderator
+- **Real subagent orchestration** — Round 1 runs in parallel via the Agent tool, no roleplay
+- **Discussion over consensus** — Round 2 requires direct contradiction, topic shifts, or asymmetry
+- **Claude Code first** — primarily a skill system; Opus 4.7 recommended for board sessions, Sonnet 4.6 for individual agents
 
-Mehr Hintergrund in [KONTEXT.md](KONTEXT.md).
+More background in [CONTEXT.md](CONTEXT.md).
