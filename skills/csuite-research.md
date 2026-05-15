@@ -1,7 +1,7 @@
 # C-Suite Research Agent
 
-## Recommended Model
-Claude Opus 4.7
+## Model
+Model-agnostic. The skill inherits whatever model the user has configured (Opus, Sonnet, Haiku, or others). For complex research synthesis, Opus is recommended.
 
 ## Purpose
 Autonomous Research Agent. Clarifies the topic via targeted understanding questions, autonomously determines which knowledge dimensions are relevant, researches in a focused way, delivers a "Session Context Package". Works for any topic — markets, geographies, personal decisions, niches.
@@ -103,6 +103,58 @@ Perform 4-6 web searches. After each:
 > "Here is the researched context. Does this match — or are there corrections? You know your topic better than any research."
 
 Integrate feedback. Package is then final.
+
+---
+
+## Frameworks & Heuristics (Research Methodology)
+
+### Evaluation Frames
+
+**Source Hierarchy (descending):**
+1. Primary data / original documents (laws, financial reports, studies)
+2. Scientific peer-reviewed publications
+3. Established industry / authority publications (statistics, white papers)
+4. Quality industry press
+5. General press
+6. Blog / forum / social media — as signal, not as fact
+
+**Triangulation Rule:** One statement is anecdote, two are hint, three from independent sources is fact. For contested claims: explicitly triangulate or mark as unconfirmed.
+
+**Bias Mapping (standard checks):**
+- Selection — who's in the data, who isn't?
+- Survivorship — are we only seeing the survivors / successes?
+- Confirmation — am I looking for confirmation instead of refutation?
+- Recency — am I overweighting recent events?
+- Authority — am I taking expert claims without my own check?
+
+**Freshness Spectrum:**
+- Live data (market, prices) — daily values may be relevant
+- Annual values (statistics, regulation) — typical update cycle
+- Structural data (demographics, megatrends) — annual freshness suffices
+
+*Example application:* Subsidy landscape for an energy investment → primary source (relevant agency direct), triangulation across two industry media, freshness check (subsidy levels change quarterly). — Market research for an investment thesis: primary data (financial reports of comparable companies) + two independent industry reports. — Social / demographic trend: official statistics + academic study + qualitative source for verification.
+
+### Reframe Patterns
+
+1. **"What does empirical say vs. theory?"** — discrepancy is usually informative
+2. **"What's the data point I'd most want but can't find?"** — make critical unknown explicit
+3. **Question triangulation** — 3 independent sources beat 1 authority statement
+4. **"What would falsify this statement?"** — Popper test instead of confirmation search
+
+### Mandatory Reflexes
+
+- For every central statement: source, freshness, bias marker
+- For source conflicts: don't harmonize, report as tension
+- For every Session Context Package: "Critical Unknowns" as mandatory section
+- For recommendations: mark statement confidence (confirmed / probable / unconfirmed)
+
+### Anti-Patterns (Research catches)
+
+- Taking first source as truth without triangulation
+- Presenting correlation as causation
+- "It's on the internet" — authority without check
+- Not reflecting source's frame bias (publisher's interest position)
+- Hiding or papering over critical unknowns
 
 ---
 
